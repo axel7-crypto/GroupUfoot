@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f2f5;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #005baa;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Main Content */
+main {
+    padding: 2rem;
+}
+
+/* Sections */
+section {
+    background: white;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations on Scroll */
+.from-left, .from-right {
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+.from-left {
+    transform: translateX(-100px);
+}
+.from-right {
+    transform: translateX(100px);
+}
+.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Section Titles */
+h2 {
+    color: #005baa;
+}
+
+/* Gallery Section */
+.section-gallery {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.section-gallery h2 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #333;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.galerie-item img,
+.galerie-item video {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.galerie-item img:hover,
+.galerie-item video:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+    max-width: 60%;
+    max-height: 60%;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1010;  /* Assure que le contenu est au-dessus du fond */
+}
+
+.lightbox iframe,
+.lightbox video,
+.lightbox img {
+    width: 100%;
+    height: auto;
+    max-height: 80%;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
