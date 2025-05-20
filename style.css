@@ -518,3 +518,21 @@
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+/* Empêche tout débordement horizontal */
+body {
+  overflow-x: hidden;
+}
+
+/* Images et vidéos à largeur adaptative */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Exemple : mise en colonne sous une certaine largeur */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
