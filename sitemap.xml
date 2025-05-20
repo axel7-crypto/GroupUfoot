@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
-   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Page d'accueil -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://groupufoot.com/</loc>
-    <lastmod>2025-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Ajoute ici d'autres URLs si besoin, exemple : -->
+  <!--
+  <url>
+    <loc>https://groupufoot.com/galerie1edition.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
 
 </urlset>
