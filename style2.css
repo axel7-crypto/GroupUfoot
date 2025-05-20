@@ -92,13 +92,7 @@ h2 {
 
 
 
-.lightbox iframe,
-.lightbox video,
-.lightbox img {
-    width: 100%;
-    height: auto;
-    max-height: 80%;
-}
+
 
 /* Close Button */
 .close {
