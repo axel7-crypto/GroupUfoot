@@ -146,6 +146,7 @@
 <section id="contact" class="contact-section">
   <h2>Contactez-nous</h2>
   <p>Vous avez une question ou souhaitez collaborer ? Écrivez-nous !</p>
+
   <div class="contact-info">
     <div class="contact-item">
       <img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email Icon" width="150" height="150" loading="lazy"/>
@@ -169,17 +170,30 @@
     <input type="text" name="name" placeholder="Votre nom" required>
     <input type="email" name="email" placeholder="Votre email" required>
     <textarea name="message" placeholder="Votre message" required></textarea>
+
+    <!-- reCAPTCHA ici -->
+    <div class="g-recaptcha" data-sitekey="6LeR_EgrAAAAABwWI2J2fp6OcC-AFfB1cKdk3qPR"></div>
+
     <button type="submit">Envoyer</button>
     <p id="confirmation" style="display:none; color:green; margin-top:10px;">Message envoyé avec succès !</p>
   </form>
 </section>
 
+<!-- Script reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Script JS du formulaire -->
 <script>
   const form = document.getElementById("contact-form");
   const confirmation = document.getElementById("confirmation");
 
   form.addEventListener("submit", async function (e) {
-    e.preventDefault(); // Empêche l'envoi classique
+    e.preventDefault();
+
+    if (grecaptcha.getResponse() === "") {
+      alert("Merci de valider le reCAPTCHA.");
+      return;
+    }
 
     const formData = new FormData(form);
 
@@ -192,6 +206,7 @@
 
       if (response.ok) {
         form.reset();
+        grecaptcha.reset();
         confirmation.style.display = "block";
       } else {
         alert("Une erreur s’est produite. Veuillez réessayer.");
@@ -202,11 +217,13 @@
   });
 </script>
 
+
 <!-- Section Footer - Message de Signature -->
 <footer class="footer">
   <p>Développé avec passion par <strong>Yohann Axel KOUAKOU</strong> | 2025</p>
   <p>Contactez-moi : <a href="mailto:Kyohannaxel06@gmail.com">Kyohannaxel06@gmail.com</a></p>
 </footer>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
