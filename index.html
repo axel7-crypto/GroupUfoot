@@ -171,14 +171,12 @@
     <input type="email" name="email" placeholder="Votre email" required>
     <textarea name="message" placeholder="Votre message" required></textarea>
 
-    <div class="g-recaptcha" data-sitekey="6LdGZEgrAAAAALbi7RGomfrtCwMSIQz_RAOFSwKM"></div>
+    
 
     <button type="submit">Envoyer</button>
     <p id="confirmation" style="display:none; color:green; margin-top:10px;">Message envoyé avec succès !</p>
   </form>
 </section>
-
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
 document.getElementById('contact-form').addEventListener('submit', function(event) {
