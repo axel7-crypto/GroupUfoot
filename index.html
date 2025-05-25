@@ -164,100 +164,44 @@
       </a>        
     </div>
   </div>
+
   <form id="contact-form" action="https://formspree.io/f/xnndkpyr" method="POST">
     <input type="text" name="name" placeholder="Votre nom" required>
     <input type="email" name="email" placeholder="Votre email" required>
     <textarea name="message" placeholder="Votre message" required></textarea>
-
-    
-
     <button type="submit">Envoyer</button>
     <p id="confirmation" style="display:none; color:green; margin-top:10px;">Message envoyé avec succès !</p>
   </form>
 </section>
 
 <script>
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Empêche l'envoi classique
+  const form = document.getElementById("contact-form");
+  const confirmation = document.getElementById("confirmation");
 
-  if (grecaptcha.getResponse() === "") {
-    alert("Merci de valider le reCAPTCHA.");
-    return;
-  }
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Empêche l'envoi classique
 
-  fetch(this.action, {
-    method: this.method,
-    body: new FormData(this),
-    headers: {
-      'Accept': 'application/json'
-    }
-  }).then(response => {
-    if (response.ok) {
-      this.reset();
-      grecaptcha.reset();
-      document.getElementById('confirmation').style.display = 'block';
-    } else {
-      alert("Une erreur est survenue. Veuillez réessayer.");
-    }
-  }).catch(() => {
-    alert("Une erreur est survenue. Veuillez réessayer.");
-  });
-});
-</script>
+    const formData = new FormData(form);
 
-<script>
-        const form = document.getElementById("contact-form");
-        const confirmation = document.getElementById("confirmation");
-      
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault(); // empêche l'envoi automatique
-      
-          const formData = new FormData(form);
-      
-          const response = await fetch(form.action, {
-            method: form.method,
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
-      
-          if (response.ok) {
-            form.reset();
-            confirmation.style.display = "block";
-          } else {
-            alert("Une erreur s’est produite. Veuillez réessayer.");
-          }
-        });
-</script>
-    
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  
-  <script>
-    // Fonction d'ouverture de la lightbox sur clic image
-    document.addEventListener('DOMContentLoaded', function () {
-    const images = document.querySelectorAll('.gallery-grid img'); // Toutes les images dans une galerie
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.querySelector('.lightbox .close');
-      
-    images.forEach(img => {
-    img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightbox.style.display = 'flex'; // Ouvre la lightbox
-  });
-});
-    closeBtn.addEventListener('click', () => {
-      lightbox.style.display = 'none'; // Ferme la lightbox
-    });
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
 
-    // Si on clique en dehors de l'image, fermer aussi
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.style.display = 'none';
+      if (response.ok) {
+        form.reset();
+        confirmation.style.display = "block";
+      } else {
+        alert("Une erreur s’est produite. Veuillez réessayer.");
       }
-    });
+    } catch (error) {
+      alert("Une erreur s’est produite. Veuillez réessayer.");
+    }
   });
 </script>
+
 <!-- Section Footer - Message de Signature -->
 <footer class="footer">
   <p>Développé avec passion par <strong>Yohann Axel KOUAKOU</strong> | 2025</p>
