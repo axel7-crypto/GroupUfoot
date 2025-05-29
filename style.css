@@ -86,43 +86,48 @@
     margin: 0 auto;
   }
   
-  /* Section Sponsors */
+ /* Section Sponsors */
 .section-sponsors {
-    padding: 50px 20px;
-    background-color: #f4f4f4;
-    text-align: center;
-  }
-  
-  .section-sponsors h2 {
-    font-size: 2rem;
-    color: #000;
-    margin-bottom: 30px;
-  }
-  
-  .sponsors-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .sponsor-card {
-    background-color:white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s; 
-  }
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
 
-  .sponsor-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .sponsor-card img {
-    max-width: 150px;
-    height: auto;
-  }
-  
+.section-sponsors h2 {
+  font-size: 2rem;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.sponsors-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.sponsor-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: 100%;
+  max-width: 180px;
+  text-align: center;
+}
+
+.sponsor-card:hover {
+  transform: scale(1.05);
+}
+
+.sponsor-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+
   /* Section Galerie */
 .section-gallery {
     padding: 50px 20px;
