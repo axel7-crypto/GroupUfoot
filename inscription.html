@@ -90,6 +90,28 @@
       transition: all 0.3s;
     }
 
+    input[type="file"] {
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    input[type="file"]::file-selector-button {
+      background: #00bfff;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 15px;
+      transition: all 0.3s;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+      background: #0080ff;
+      transform: translateY(-2px);
+    }
+
     input::placeholder, textarea::placeholder { 
       color: rgba(255,255,255,0.6); 
     }
@@ -481,15 +503,15 @@
 
 <body>
   <div class="container">
-    <h1>Inscription des équipes</h1>
+    <h1>⚽ Inscription des équipes</h1>
     <p class="subtitle">Tournoi officiel Group UFoot – Révèle ton talent</p>
 
-    <!-- Gestion de données avec Formspree -->
-    <form id="inscription-form" action="https://formspree.io/f/xnjbqbdv" method="POST">
+    <!-- REMPLACEZ "YOUR_FORM_ID" par votre ID Formspree -->
+    <form id="inscription-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 
       <!-- INFOS ÉQUIPE -->
       <div class="section">
-        <h2>Informations de l'équipe</h2>
+        <h2>📋 Informations de l'équipe</h2>
         <div class="grid">
           <div>
             <label>Nom de l'équipe <span class="required">*</span></label>
@@ -504,7 +526,7 @@
 
       <!-- DIRIGEANTS -->
       <div class="section">
-        <h2>Encadrement</h2>
+        <h2>👥 Encadrement</h2>
         <div class="grid">
           <div>
             <label>Président <span class="required">*</span></label>
@@ -527,7 +549,7 @@
 
       <!-- JOUEURS -->
       <div class="section">
-        <h2>Joueurs (10)</h2>
+        <h2>⚽ Joueurs (10)</h2>
         <div class="players">
           <input type="text" name="joueur_1" placeholder="Joueur 1" required>
           <input type="text" name="joueur_2" placeholder="Joueur 2" required>
@@ -544,10 +566,10 @@
 
       <!-- PAIEMENT -->
       <div class="section payment-box">
-        <h2>Paiement de l'inscription</h2>
+        <h2>💳 Paiement de l'inscription</h2>
         
         <div class="payment-info">
-          <h3>Frais d'inscription: 30 000 FCFA</h3>
+          <h3>💰 Frais d'inscription: 50 000 FCFA</h3>
           <p>Sélectionnez votre méthode de paiement :</p>
         </div>
 
@@ -570,12 +592,12 @@
 
         <!-- Détails Wave -->
         <div id="wave-details" class="payment-details active">
-          <h3 style="color: #FF6B00; margin-bottom: 15px;"> Payer avec Wave</h3>
-          <p><strong>Numéro Wave :</strong> <span id="wave-number">+225 07 57 63 34 47</span></p>
+          <h3 style="color: #FF6B00; margin-bottom: 15px;">📱 Payer avec Wave</h3>
+          <p><strong>Numéro Wave :</strong> <span id="wave-number">+225 07 XX XX XX XX</span></p>
           <p><strong>Nom :</strong> Group UFoot</p>
-          <p><strong>Montant :</strong> 30 000 FCFA</p>
+          <p><strong>Montant :</strong> 50 000 FCFA</p>
           <button type="button" id="wave-pay-btn" class="payment-button">
-            Voir les instructions
+            🚀 Voir les instructions
           </button>
           <p style="margin-top: 15px; font-size: 13px; opacity: 0.9;">
             Après le paiement, prenez une capture d'écran et confirmez ci-dessous
@@ -584,12 +606,12 @@
 
         <!-- Détails Orange Money -->
         <div id="orange-details" class="payment-details">
-          <h3 style="color: #FF7900; margin-bottom: 15px;"> Payer avec Orange Money</h3>
+          <h3 style="color: #FF7900; margin-bottom: 15px;">📱 Payer avec Orange Money</h3>
           <p><strong>Numéro Orange :</strong> <span id="orange-number">+225 07 XX XX XX XX</span></p>
           <p><strong>Nom :</strong> Group UFoot</p>
-          <p><strong>Montant :</strong> 30 000 FCFA</p>
+          <p><strong>Montant :</strong> 50 000 FCFA</p>
           <button type="button" id="orange-pay-btn" class="payment-button orange">
-             Voir les instructions
+            🚀 Voir les instructions
           </button>
           <p style="margin-top: 15px; font-size: 13px; opacity: 0.9;">
             Composez <strong>#144#</strong> ou utilisez l'application Orange Money
@@ -601,27 +623,46 @@
           <h3 style="color: #FFCC00; margin-bottom: 15px;">📱 Payer avec MTN Mobile Money</h3>
           <p><strong>Numéro MTN :</strong> <span id="mtn-number">+225 05 XX XX XX XX</span></p>
           <p><strong>Nom :</strong> Group UFoot</p>
-          <p><strong>Montant :</strong> 30 000 FCFA</p>
+          <p><strong>Montant :</strong> 50 000 FCFA</p>
           <button type="button" id="mtn-pay-btn" class="payment-button yellow">
-             Voir les instructions
+            🚀 Voir les instructions
           </button>
           <p style="margin-top: 15px; font-size: 13px; opacity: 0.9;">
             Composez <strong>*133#</strong> ou utilisez l'application MTN MoMo
           </p>
         </div>
 
+        <!-- Preuve de paiement -->
+        <div style="margin-top: 25px;">
+          <label style="font-size: 16px; color: #00bfff; margin-bottom: 10px; display: block;">
+            📸 Preuve de paiement <span class="required">*</span>
+          </label>
+          <p style="font-size: 13px; opacity: 0.8; margin-bottom: 12px;">
+            Veuillez joindre une capture d'écran de votre confirmation de paiement Wave, Orange Money ou MTN MoMo
+          </p>
+          <input 
+            type="file" 
+            name="preuve_paiement" 
+            accept="image/*,.pdf" 
+            required
+            style="padding: 10px; background: rgba(0, 191, 255, 0.1); border: 2px dashed #00bfff; cursor: pointer;"
+          >
+          <p style="font-size: 12px; opacity: 0.7; margin-top: 8px;">
+            Formats acceptés : JPG, PNG, PDF (Max 5 Mo)
+          </p>
+        </div>
+
         <!-- Confirmation de paiement -->
         <div class="checkbox">
-          <input type="checkbox" name="paiement_confirme" value="Oui" required>
-          <span> J'ai effectué le paiement de 30 000 FCFA</span>
+          <input type="checkbox" id="payment-checkbox" name="paiement_confirme" value="Oui" required>
+          <span>✅ Je confirme avoir effectué le paiement de 50 000 FCFA et fourni la preuve</span>
         </div>
 
         <!-- Champ caché pour Formspree -->
         <input type="hidden" name="_subject" value="Nouvelle inscription - Tournoi Group UFoot">
-        <input type="hidden" name="_next" value="#success">
       </div>
 
-      <button type="submit"> Finaliser l'inscription</button>
+      <button type="submit">🏆 Finaliser l'inscription</button>
     </form>
   </div>
 
@@ -636,7 +677,7 @@
   <!-- SUCCESS OVERLAY -->
   <div id="success-overlay" class="success-overlay">
     <div class="success-box">
-      <h2> Inscription réussie !</h2>
+      <h2>✅ Inscription réussie !</h2>
       <p>Votre inscription a été envoyée avec succès.</p>
       <p>Nous vérifierons votre paiement et vous confirmerons votre participation dans les plus brefs délais.</p>
       <p style="margin-top: 20px; font-weight: 600;">Merci et à bientôt sur le terrain ! ⚽</p>
@@ -648,10 +689,10 @@
     // CONFIGURATION - À PERSONNALISER
     // ==========================================
     const CONFIG = {
-      WAVE_NUMBER: '+225 07 57 63 34 47',  // Votre numéro Wave
+      WAVE_NUMBER: '+225 07 XX XX XX XX',  // Votre numéro Wave
       ORANGE_NUMBER: '+225 07 XX XX XX XX', // Votre numéro Orange Money
       MTN_NUMBER: '+225 05 XX XX XX XX',    // Votre numéro MTN
-      AMOUNT: 30000,                         // Montant en FCFA
+      AMOUNT: 50000,                         // Montant en FCFA
       MERCHANT_NAME: 'Group UFoot'
     };
 
@@ -731,22 +772,40 @@
     // BOUTONS DE PAIEMENT - WAVE
     // ==========================================
     document.getElementById('wave-pay-btn').addEventListener('click', function() {
-      const cleanNumber = CONFIG.WAVE_NUMBER.replace(/[\s+]/g, '');
+      const cleanNumber = CONFIG.WAVE_NUMBER.replace(/[\s+-]/g, '');
       
       if (isMobileDevice()) {
-        // Sur mobile : essayer d'ouvrir l'app Wave
-        const waveDeepLink = `wave://send?phone=${cleanNumber}&amount=${CONFIG.AMOUNT}&note=Inscription%20${encodeURIComponent(CONFIG.MERCHANT_NAME)}`;
+        // Sur mobile : essayer plusieurs méthodes pour ouvrir Wave
         
+        // Méthode 1 : Deep link Wave
+        const waveDeepLink = `wave://send?phone=${cleanNumber}&amount=${CONFIG.AMOUNT}`;
         window.location.href = waveDeepLink;
         
+        // Méthode 2 : Si l'app ne s'ouvre pas, proposer d'autres options
         setTimeout(() => {
-          alert('Si l\'application Wave ne s\'est pas ouverte, ouvrez-la manuellement et envoyez ' + CONFIG.AMOUNT.toLocaleString() + ' FCFA au ' + CONFIG.WAVE_NUMBER);
-        }, 2000);
+          const userChoice = confirm(
+            '📱 L\'application Wave devrait s\'ouvrir.\n\n' +
+            'Si elle ne s\'est pas ouverte :\n' +
+            '• Ouvrez Wave manuellement\n' +
+            '• Envoyez ' + CONFIG.AMOUNT.toLocaleString() + ' FCFA\n' +
+            '• Au numéro : ' + CONFIG.WAVE_NUMBER + '\n\n' +
+            'Cliquez sur OK pour copier le numéro'
+          );
+          
+          if (userChoice) {
+            // Copier le numéro dans le presse-papiers
+            navigator.clipboard.writeText(CONFIG.WAVE_NUMBER).then(() => {
+              alert('✅ Numéro copié : ' + CONFIG.WAVE_NUMBER + '\n\nVous pouvez maintenant le coller dans Wave');
+            }).catch(() => {
+              alert('Numéro Wave : ' + CONFIG.WAVE_NUMBER);
+            });
+          }
+        }, 1500);
       } else {
         // Sur ordinateur : afficher le modal avec instructions
         const modalContent = `
           <div class="modal-header">
-            <div class="icon"></div>
+            <div class="icon">💳</div>
             <h3>Paiement Wave</h3>
             <p style="opacity: 0.8;">Instructions pour effectuer le paiement</p>
           </div>
@@ -768,14 +827,14 @@
               <div class="step-number">3</div>
               <div class="step-text">
                 Entrez le numéro : <strong>${CONFIG.WAVE_NUMBER}</strong>
-                <button class="copy-btn" id="copy-wave-number" onclick="copyToClipboard('${CONFIG.WAVE_NUMBER}', 'copy-wave-number')"> Copier</button>
+                <button class="copy-btn" id="copy-wave-number" onclick="copyToClipboard('${CONFIG.WAVE_NUMBER}', 'copy-wave-number')">📋 Copier</button>
               </div>
             </div>
             <div class="modal-step">
               <div class="step-number">4</div>
               <div class="step-text">
                 Montant : <strong>${CONFIG.AMOUNT.toLocaleString()} FCFA</strong>
-                <button class="copy-btn" id="copy-amount" onclick="copyToClipboard('${CONFIG.AMOUNT}', 'copy-amount')"> Copier</button>
+                <button class="copy-btn" id="copy-amount" onclick="copyToClipboard('${CONFIG.AMOUNT}', 'copy-amount')">📋 Copier</button>
               </div>
             </div>
             <div class="modal-step">
@@ -785,7 +844,7 @@
           </div>
 
           <div class="modal-info" style="background: rgba(0, 191, 255, 0.2); border-left-color: #00bfff;">
-            <p style="margin-bottom: 10px;"> <strong>Après le paiement :</strong></p>
+            <p style="margin-bottom: 10px;">📸 <strong>Après le paiement :</strong></p>
             <p style="font-size: 14px;">• Prenez une capture d'écran de la confirmation</p>
             <p style="font-size: 14px;">• Cochez la case de confirmation sur le formulaire</p>
           </div>
@@ -804,7 +863,7 @@
     document.getElementById('orange-pay-btn').addEventListener('click', function() {
       const modalContent = `
         <div class="modal-header">
-          <div class="icon"></div>
+          <div class="icon">🍊</div>
           <h3 style="color: #FF7900;">Paiement Orange Money</h3>
           <p style="opacity: 0.8;">Instructions pour effectuer le paiement</p>
         </div>
@@ -813,7 +872,7 @@
           <p><strong style="color: #FF7900;">Montant à payer :</strong> ${CONFIG.AMOUNT.toLocaleString()} FCFA</p>
         </div>
 
-        <h4 style="color: #FF7900; margin: 20px 0 15px;"> Option 1 : Via USSD</h4>
+        <h4 style="color: #FF7900; margin: 20px 0 15px;">📞 Option 1 : Via USSD</h4>
         <div class="modal-steps">
           <div class="modal-step">
             <div class="step-number" style="background: #FF7900;">1</div>
@@ -827,7 +886,7 @@
             <div class="step-number" style="background: #FF7900;">3</div>
             <div class="step-text">
               Entrez le numéro : <strong>${CONFIG.ORANGE_NUMBER}</strong>
-              <button class="copy-btn" id="copy-orange" onclick="copyToClipboard('${CONFIG.ORANGE_NUMBER}', 'copy-orange')"> Copier</button>
+              <button class="copy-btn" id="copy-orange" onclick="copyToClipboard('${CONFIG.ORANGE_NUMBER}', 'copy-orange')">📋 Copier</button>
             </div>
           </div>
           <div class="modal-step">
@@ -836,7 +895,7 @@
           </div>
         </div>
 
-        <h4 style="color: #FF7900; margin: 20px 0 15px;"> Option 2 : Via l'application</h4>
+        <h4 style="color: #FF7900; margin: 20px 0 15px;">📱 Option 2 : Via l'application</h4>
         <div class="modal-steps">
           <div class="modal-step">
             <div class="step-number" style="background: #FF7900;">1</div>
@@ -865,7 +924,7 @@
     document.getElementById('mtn-pay-btn').addEventListener('click', function() {
       const modalContent = `
         <div class="modal-header">
-          <div class="icon"></div>
+          <div class="icon">💛</div>
           <h3 style="color: #FFCC00;">Paiement MTN Mobile Money</h3>
           <p style="opacity: 0.8;">Instructions pour effectuer le paiement</p>
         </div>
@@ -874,7 +933,7 @@
           <p><strong style="color: #FFCC00;">Montant à payer :</strong> ${CONFIG.AMOUNT.toLocaleString()} FCFA</p>
         </div>
 
-        <h4 style="color: #FFCC00; margin: 20px 0 15px;"> Option 1 : Via USSD</h4>
+        <h4 style="color: #FFCC00; margin: 20px 0 15px;">📞 Option 1 : Via USSD</h4>
         <div class="modal-steps">
           <div class="modal-step">
             <div class="step-number" style="background: #FFCC00; color: #000;">1</div>
@@ -888,7 +947,7 @@
             <div class="step-number" style="background: #FFCC00; color: #000;">3</div>
             <div class="step-text">
               Entrez le numéro : <strong>${CONFIG.MTN_NUMBER}</strong>
-              <button class="copy-btn" id="copy-mtn" onclick="copyToClipboard('${CONFIG.MTN_NUMBER}', 'copy-mtn')"> Copier</button>
+              <button class="copy-btn" id="copy-mtn" onclick="copyToClipboard('${CONFIG.MTN_NUMBER}', 'copy-mtn')">📋 Copier</button>
             </div>
           </div>
           <div class="modal-step">
@@ -897,7 +956,7 @@
           </div>
         </div>
 
-        <h4 style="color: #FFCC00; margin: 20px 0 15px;"> Option 2 : Via l'application</h4>
+        <h4 style="color: #FFCC00; margin: 20px 0 15px;">📱 Option 2 : Via l'application</h4>
         <div class="modal-steps">
           <div class="modal-step">
             <div class="step-number" style="background: #FFCC00; color: #000;">1</div>
@@ -925,21 +984,71 @@
     // ==========================================
     const form = document.getElementById('inscription-form');
 
-    // Détecter la soumission réussie avec Formspree
-    if (window.location.hash === '#success') {
-      document.getElementById('success-overlay').classList.add('active');
+    // Validation avant soumission
+    form.addEventListener('submit', function(e) {
+      const fileInput = document.querySelector('input[name="preuve_paiement"]');
+      const checkbox = document.getElementById('payment-checkbox');
       
-      // Rediriger vers la page d'accueil après 5 secondes
-      setTimeout(() => {
-        window.location.href = '/'; // Changez ceci vers votre page d'accueil
-      }, 5000);
-    }
+      // Vérifier si un fichier a été joint
+      if (!fileInput.files || fileInput.files.length === 0) {
+        e.preventDefault();
+        alert('⚠️ Veuillez joindre une preuve de paiement (capture d\'écran de la transaction)');
+        fileInput.focus();
+        return false;
+      }
+
+      // Vérifier la taille du fichier (max 5 Mo)
+      const maxSize = 5 * 1024 * 1024; // 5 Mo en octets
+      if (fileInput.files[0].size > maxSize) {
+        e.preventDefault();
+        alert('⚠️ Le fichier est trop volumineux. Taille maximale : 5 Mo');
+        fileInput.value = '';
+        return false;
+      }
+
+      // Vérifier que la case est cochée
+      if (!checkbox.checked) {
+        e.preventDefault();
+        alert('⚠️ Veuillez confirmer que vous avez effectué le paiement');
+        checkbox.focus();
+        return false;
+      }
+
+      // Si tout est OK, afficher un message de chargement
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ Envoi en cours...';
+      submitBtn.style.background = '#666';
+    });
 
     // Validation du numéro de téléphone
     const phoneInput = document.querySelector('input[name="telephone"]');
     if (phoneInput) {
       phoneInput.addEventListener('input', function() {
         this.value = this.value.replace(/[^0-9+\s]/g, '');
+      });
+    }
+
+    // Afficher un aperçu du fichier uploadé
+    const fileInput = document.querySelector('input[name="preuve_paiement"]');
+    if (fileInput) {
+      fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const fileName = file.name;
+          const fileSize = (file.size / 1024 / 1024).toFixed(2); // Taille en Mo
+          
+          // Créer ou mettre à jour l'aperçu
+          let preview = document.getElementById('file-preview');
+          if (!preview) {
+            preview = document.createElement('p');
+            preview.id = 'file-preview';
+            preview.style.cssText = 'margin-top: 10px; padding: 10px; background: rgba(0, 255, 136, 0.2); border-radius: 8px; font-size: 13px;';
+            fileInput.parentElement.appendChild(preview);
+          }
+          
+          preview.innerHTML = `✅ Fichier sélectionné : <strong>${fileName}</strong> (${fileSize} Mo)`;
+        }
       });
     }
   </script>
