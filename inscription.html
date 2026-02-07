@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inscription – Group UFoot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { 
+      box-sizing: border-box; 
+      font-family: 'Poppins', sans-serif; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #000 0%, #0d1b2a 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      color: #fff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: #0d1b2a;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #00bfff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #ffffff;
+      opacity: 0.85;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .section { 
+      margin-bottom: 30px; 
+    }
+
+    h2 {
+      color: #00bfff;
+      font-size: 22px;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #00bfff;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: block;
+      color: #fff;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 2px solid #1f3a5f;
+      background: #0a1a2f;
+      color: #fff;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    input::placeholder, textarea::placeholder { 
+      color: rgba(255,255,255,0.6); 
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #00bfff;
+      background: #0c2b4d;
+      outline: none;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+    }
+
+    .players {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    /* SECTION PAIEMENT */
+    .payment-box {
+      background: linear-gradient(135deg, #0a1a2f 0%, #1a2f4a 100%);
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid #00bfff;
+      box-shadow: 0 10px 30px rgba(0, 191, 255, 0.2);
+    }
+
+    .payment-info {
+      background: rgba(0, 191, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 2px solid rgba(0, 191, 255, 0.3);
+    }
+
+    .payment-info h3 {
+      color: #00bfff;
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .payment-info p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .payment-info strong {
+      color: #00bfff;
+      font-size: 16px;
+    }
+
+    .payment-methods {
+      margin: 20px 0;
+    }
+
+    .payment-methods label {
+      display: block;
+      margin-bottom: 12px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .payment-methods label:hover {
+      background: rgba(0, 191, 255, 0.1);
+      border-color: rgba(0, 191, 255, 0.5);
+    }
+
+    .payment-methods input[type="radio"] {
+      width: auto;
+      margin-right: 10px;
+      transform: scale(1.3);
+      cursor: pointer;
+    }
+
+    .payment-details {
+      display: none;
+      margin-top: 15px;
+      padding: 20px;
+      background: rgba(0, 191, 255, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid #00bfff;
+    }
+
+    .payment-details.active {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .payment-button {
+      display: inline-block;
+      background: #FF6B00;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      margin: 10px 0;
+      transition: all 0.3s;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
+      border: none;
+      cursor: pointer;
+    }
+
+    .payment-button:hover {
+      background: #ff8533;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
+    }
+
+    .payment-button.orange {
+      background: #FF7900;
+    }
+
+    .payment-button.yellow {
+      background: #FFCC00;
+      color: #000;
+    }
+
+    .checkbox {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #fff;
+      padding: 15px;
+      background: rgba(0, 191, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .checkbox input { 
+      width: auto; 
+      transform: scale(1.3);
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 30px;
+      padding: 18px;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00bfff 0%, #0080ff 100%);
+      color: #fff;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 30px rgba(0, 191, 255, 0.4);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 191, 255, 0.6);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(-1px);
+    }
+
+    .required { 
+      color: #ff6b6b; 
+    }
+
+    /* MODAL DE PAIEMENT */
+    .payment-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .payment-modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1a2f4a 100%);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 80px rgba(0, 191, 255, 0.4);
+      border: 2px solid #00bfff;
+      animation: slideUp 0.4s ease;
+      position: relative;
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      width: auto;
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .modal-close:hover {
+      opacity: 1;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .modal-header h3 {
+      color: #00bfff;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .modal-header .icon {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .modal-steps {
+      background: rgba(0, 191, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+
+    .modal-step {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      background: #00bfff;
+      color: #000;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      flex: 1;
+      padding-top: 4px;
+    }
+
+    .modal-info {
+      background: rgba(255, 107, 0, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid #FF6B00;
+      margin: 20px 0;
+    }
+
+    .modal-info strong {
+      color: #FF6B00;
+      font-size: 16px;
+    }
+
+    .copy-btn {
+      background: rgba(0, 191, 255, 0.2);
+      border: 1px solid #00bfff;
+      color: #00bfff;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-left: 10px;
+      transition: all 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: #00bfff;
+      color: #000;
+    }
+
+    /* SUCCESS MESSAGE */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .success-box {
+      background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+      color: #000;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 255, 136, 0.5);
+      animation: slideUp 0.5s ease;
+    }
+
+    .success-box h2 {
+      font-size: 32px;
+      color: #000;
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    .success-box p {
+      font-size: 16px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .container { 
+        padding: 25px; 
+      }
+      h1 { 
+        font-size: 28px; 
+      }
+      .grid, .players { 
+        grid-template-columns: 1fr; 
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Inscription des équipes</h1>
+    <p class="subtitle">Tournoi officiel Group UFoot – Révèle ton talent</p>
+
+    <!-- Gestion de données avec Formspree -->
+    <form id="inscription-form" action="https://formspree.io/f/xnjbqbdv" method="POST">
+
+      <!-- INFOS ÉQUIPE -->
+      <div class="section">
+        <h2>Informations de l'équipe</h2>
+        <div class="grid">
+          <div>
+            <label>Nom de l'équipe <span class="required">*</span></label>
+            <input type="text" name="nom_equipe" required placeholder="Ex: Les Lions de Yopougon">
+          </div>
+          <div>
+            <label>Adresse de l'équipe <span class="required">*</span></label>
+            <input type="text" name="adresse_equipe" required placeholder="Ex: Abidjan, Yopougon">
+          </div>
+        </div>
+      </div>
+
+      <!-- DIRIGEANTS -->
+      <div class="section">
+        <h2>Encadrement</h2>
+        <div class="grid">
+          <div>
+            <label>Président <span class="required">*</span></label>
+            <input type="text" name="president" required placeholder="Nom du président">
+          </div>
+          <div>
+            <label>Coach <span class="required">*</span></label>
+            <input type="text" name="coach" required placeholder="Nom du coach">
+          </div>
+          <div>
+            <label>Téléphone <span class="required">*</span></label>
+            <input type="tel" name="telephone" required placeholder="+225 07 XX XX XX XX">
+          </div>
+          <div>
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="_replyto" required placeholder="exemple@email.com">
+          </div>
+        </div>
+      </div>
+
+      <!-- JOUEURS -->
+      <div class="section">
+        <h2>Joueurs (10)</h2>
+        <div class="players">
+          <input type="text" name="joueur_1" placeholder="Joueur 1" required>
+          <input type="text" name="joueur_2" placeholder="Joueur 2" required>
+          <input type="text" name="joueur_3" placeholder="Joueur 3" required>
+          <input type="text" name="joueur_4" placeholder="Joueur 4" required>
+          <input type="text" name="joueur_5" placeholder="Joueur 5" required>
+          <input type="text" name="joueur_6" placeholder="Joueur 6" required>
+          <input type="text" name="joueur_7" placeholder="Joueur 7" required>
+          <input type="text" name="joueur_8" placeholder="Joueur 8" required>
+          <input type="text" name="joueur_9" placeholder="Joueur 9" required>
+          <input type="text" name="joueur_10" placeholder="Joueur 10" required>
+        </div>
+      </div>
+
+      <!-- PAIEMENT -->
+      <div class="section payment-box">
+        <h2>Paiement de l'inscription</h2>
+        
+        <div class="payment-info">
+          <h3>Frais d'inscription: 30 000 FCFA</h3>
+          <p>Sélectionnez votre méthode de paiement :</p>
+        </div>
+
+        <div class="payment-methods">
+          <label>
+            <input type="radio" name="methode_paiement" value="Wave" checked>
+            <strong>Wave</strong> - Paiement mobile (Recommandé)
+          </label>
+
+          <label>
+            <input type="radio" name="methode_paiement" value="Orange Money">
+            <strong>Orange Money</strong> - Paiement mobile
+          </label>
+
+          <label>
+            <input type="radio" name="methode_paiement" value="MTN Mobile Money">
+            <strong>MTN Mobile Money</strong> - Paiement mobile
+          </label>
+        </div>
+
+        <!-- Détails Wave -->
+        <div id="wave-details" class="payment-details active">
+          <h3 style="color: #FF6B00; margin-bottom: 15px;"> Payer avec Wave</h3>
+          <p><strong>Numéro Wave :</strong> <span id="wave-number">+225 07 57 63 34 47</span></p>
+          <p><strong>Nom :</strong> Group UFoot</p>
+          <p><strong>Montant :</strong> 30 000 FCFA</p>
+          <button type="button" id="wave-pay-btn" class="payment-button">
+            Voir les instructions
+          </button>
+          <p style="margin-top: 15px; font-size: 13px; opacity: 0.9;">
+            Après le paiement, prenez une capture d'écran et confirmez ci-dessous
+          </p>
+        </div>
+
+        <!-- Détails Orange Money -->
+        <div id="orange-details" class="payment-details">
+          <h3 style="color: #FF7900; margin-bottom: 15px;"> Payer avec Orange Money</h3>
+          <p><strong>Numéro Orange :</strong> <span id="orange-number">+225 07 XX XX XX XX</span></p>
+          <p><strong>Nom :</strong> Group UFoot</p>
+          <p><strong>Montant :</strong> 30 000 FCFA</p>
+          <button type="button" id="orange-pay-btn" class="payment-button orange">
+             Voir les instructions
+          </button>
+          <p style="margin-top: 15px; font-size: 13px; opacity: 0.9;">
+            Composez <strong>#144#</strong> ou utilisez l'application Orange Money
+          </p>
+        </div>
+
+        <!-- Détails MTN -->
+        <div id="mtn-details" class="payment-details">
+          <h3 style="color: #FFCC00; margin-bottom: 15px;">📱 Payer avec MTN Mobile Money</h3>
+          <p><strong>Numéro MTN :</strong> <span id="mtn-number">+225 05 XX XX XX XX</span></p>
+          <p><strong>Nom :</strong> Group UFoot</p>
+          <p><strong>Montant :</strong> 30 000 FCFA</p>
+          <button type="button" id="mtn-pay-btn" class="payment-button yellow">
+             Voir les instructions
+          </button>
+          <p style="margin-top: 15px; font-size: 13px; opacity: 0.9;">
+            Composez <strong>*133#</strong> ou utilisez l'application MTN MoMo
+          </p>
+        </div>
+
+        <!-- Confirmation de paiement -->
+        <div class="checkbox">
+          <input type="checkbox" name="paiement_confirme" value="Oui" required>
+          <span> J'ai effectué le paiement de 30 000 FCFA</span>
+        </div>
+
+        <!-- Champ caché pour Formspree -->
+        <input type="hidden" name="_subject" value="Nouvelle inscription - Tournoi Group UFoot">
+        <input type="hidden" name="_next" value="#success">
+      </div>
+
+      <button type="submit"> Finaliser l'inscription</button>
+    </form>
+  </div>
+
+  <!-- MODAL DE PAIEMENT -->
+  <div id="payment-modal" class="payment-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closePaymentModal()">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- SUCCESS OVERLAY -->
+  <div id="success-overlay" class="success-overlay">
+    <div class="success-box">
+      <h2> Inscription réussie !</h2>
+      <p>Votre inscription a été envoyée avec succès.</p>
+      <p>Nous vérifierons votre paiement et vous confirmerons votre participation dans les plus brefs délais.</p>
+      <p style="margin-top: 20px; font-weight: 600;">Merci et à bientôt sur le terrain ! ⚽</p>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // CONFIGURATION - À PERSONNALISER
+    // ==========================================
+    const CONFIG = {
+      WAVE_NUMBER: '+225 07 57 63 34 47',  // Votre numéro Wave
+      ORANGE_NUMBER: '+225 07 XX XX XX XX', // Votre numéro Orange Money
+      MTN_NUMBER: '+225 05 XX XX XX XX',    // Votre numéro MTN
+      AMOUNT: 30000,                         // Montant en FCFA
+      MERCHANT_NAME: 'Group UFoot'
+    };
+
+    // Afficher les numéros dans la page
+    document.getElementById('wave-number').textContent = CONFIG.WAVE_NUMBER;
+    document.getElementById('orange-number').textContent = CONFIG.ORANGE_NUMBER;
+    document.getElementById('mtn-number').textContent = CONFIG.MTN_NUMBER;
+
+    // ==========================================
+    // GESTION DES MODALS
+    // ==========================================
+    function openPaymentModal(content) {
+      const modal = document.getElementById('payment-modal');
+      const modalBody = document.getElementById('modal-body');
+      modalBody.innerHTML = content;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePaymentModal() {
+      const modal = document.getElementById('payment-modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fermer le modal en cliquant à l'extérieur
+    document.getElementById('payment-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePaymentModal();
+      }
+    });
+
+    // Fonction pour copier du texte
+    function copyToClipboard(text, btnId) {
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById(btnId);
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copié !';
+        btn.style.background = '#00ff88';
+        btn.style.color = '#000';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+
+    // Détection mobile ou ordinateur
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // ==========================================
+    // GESTION DES MÉTHODES DE PAIEMENT
+    // ==========================================
+    const paymentRadios = document.querySelectorAll('input[name="methode_paiement"]');
+    const paymentDetails = {
+      'Wave': document.getElementById('wave-details'),
+      'Orange Money': document.getElementById('orange-details'),
+      'MTN Mobile Money': document.getElementById('mtn-details')
+    };
+
+    paymentRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        // Masquer tous les détails
+        Object.values(paymentDetails).forEach(detail => {
+          detail.classList.remove('active');
+        });
+        
+        // Afficher les détails correspondants
+        paymentDetails[this.value].classList.add('active');
+      });
+    });
+
+    // ==========================================
+    // BOUTONS DE PAIEMENT - WAVE
+    // ==========================================
+    document.getElementById('wave-pay-btn').addEventListener('click', function() {
+      const cleanNumber = CONFIG.WAVE_NUMBER.replace(/[\s+]/g, '');
+      
+      if (isMobileDevice()) {
+        // Sur mobile : essayer d'ouvrir l'app Wave
+        const waveDeepLink = `wave://send?phone=${cleanNumber}&amount=${CONFIG.AMOUNT}&note=Inscription%20${encodeURIComponent(CONFIG.MERCHANT_NAME)}`;
+        
+        window.location.href = waveDeepLink;
+        
+        setTimeout(() => {
+          alert('Si l\'application Wave ne s\'est pas ouverte, ouvrez-la manuellement et envoyez ' + CONFIG.AMOUNT.toLocaleString() + ' FCFA au ' + CONFIG.WAVE_NUMBER);
+        }, 2000);
+      } else {
+        // Sur ordinateur : afficher le modal avec instructions
+        const modalContent = `
+          <div class="modal-header">
+            <div class="icon"></div>
+            <h3>Paiement Wave</h3>
+            <p style="opacity: 0.8;">Instructions pour effectuer le paiement</p>
+          </div>
+
+          <div class="modal-info">
+            <p><strong>Montant à payer :</strong> ${CONFIG.AMOUNT.toLocaleString()} FCFA</p>
+          </div>
+
+          <div class="modal-steps">
+            <div class="modal-step">
+              <div class="step-number">1</div>
+              <div class="step-text">Ouvrez l'application <strong>Wave</strong> sur votre téléphone</div>
+            </div>
+            <div class="modal-step">
+              <div class="step-number">2</div>
+              <div class="step-text">Cliquez sur <strong>"Envoyer de l'argent"</strong></div>
+            </div>
+            <div class="modal-step">
+              <div class="step-number">3</div>
+              <div class="step-text">
+                Entrez le numéro : <strong>${CONFIG.WAVE_NUMBER}</strong>
+                <button class="copy-btn" id="copy-wave-number" onclick="copyToClipboard('${CONFIG.WAVE_NUMBER}', 'copy-wave-number')"> Copier</button>
+              </div>
+            </div>
+            <div class="modal-step">
+              <div class="step-number">4</div>
+              <div class="step-text">
+                Montant : <strong>${CONFIG.AMOUNT.toLocaleString()} FCFA</strong>
+                <button class="copy-btn" id="copy-amount" onclick="copyToClipboard('${CONFIG.AMOUNT}', 'copy-amount')"> Copier</button>
+              </div>
+            </div>
+            <div class="modal-step">
+              <div class="step-number">5</div>
+              <div class="step-text">Note : <strong>Inscription ${CONFIG.MERCHANT_NAME}</strong></div>
+            </div>
+          </div>
+
+          <div class="modal-info" style="background: rgba(0, 191, 255, 0.2); border-left-color: #00bfff;">
+            <p style="margin-bottom: 10px;"> <strong>Après le paiement :</strong></p>
+            <p style="font-size: 14px;">• Prenez une capture d'écran de la confirmation</p>
+            <p style="font-size: 14px;">• Cochez la case de confirmation sur le formulaire</p>
+          </div>
+
+          <button onclick="closePaymentModal()" style="width: 100%; margin-top: 20px; padding: 15px; font-size: 16px; background: #00bfff; color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">
+            J'ai compris
+          </button>
+        `;
+        openPaymentModal(modalContent);
+      }
+    });
+
+    // ==========================================
+    // BOUTONS DE PAIEMENT - ORANGE MONEY
+    // ==========================================
+    document.getElementById('orange-pay-btn').addEventListener('click', function() {
+      const modalContent = `
+        <div class="modal-header">
+          <div class="icon"></div>
+          <h3 style="color: #FF7900;">Paiement Orange Money</h3>
+          <p style="opacity: 0.8;">Instructions pour effectuer le paiement</p>
+        </div>
+
+        <div class="modal-info" style="background: rgba(255, 121, 0, 0.2); border-left-color: #FF7900;">
+          <p><strong style="color: #FF7900;">Montant à payer :</strong> ${CONFIG.AMOUNT.toLocaleString()} FCFA</p>
+        </div>
+
+        <h4 style="color: #FF7900; margin: 20px 0 15px;"> Option 1 : Via USSD</h4>
+        <div class="modal-steps">
+          <div class="modal-step">
+            <div class="step-number" style="background: #FF7900;">1</div>
+            <div class="step-text">Composez <strong>#144#</strong> sur votre téléphone</div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FF7900;">2</div>
+            <div class="step-text">Sélectionnez <strong>"Transfert d'argent"</strong></div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FF7900;">3</div>
+            <div class="step-text">
+              Entrez le numéro : <strong>${CONFIG.ORANGE_NUMBER}</strong>
+              <button class="copy-btn" id="copy-orange" onclick="copyToClipboard('${CONFIG.ORANGE_NUMBER}', 'copy-orange')"> Copier</button>
+            </div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FF7900;">4</div>
+            <div class="step-text">Montant : <strong>${CONFIG.AMOUNT.toLocaleString()} FCFA</strong></div>
+          </div>
+        </div>
+
+        <h4 style="color: #FF7900; margin: 20px 0 15px;"> Option 2 : Via l'application</h4>
+        <div class="modal-steps">
+          <div class="modal-step">
+            <div class="step-number" style="background: #FF7900;">1</div>
+            <div class="step-text">Ouvrez l'app <strong>Orange Money</strong></div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FF7900;">2</div>
+            <div class="step-text">Cliquez sur <strong>"Envoyer de l'argent"</strong></div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FF7900;">3</div>
+            <div class="step-text">Entrez le numéro et le montant ci-dessus</div>
+          </div>
+        </div>
+
+        <button onclick="closePaymentModal()" style="width: 100%; margin-top: 20px; padding: 15px; font-size: 16px; background: #FF7900; color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">
+          J'ai compris
+        </button>
+      `;
+      openPaymentModal(modalContent);
+    });
+
+    // ==========================================
+    // BOUTONS DE PAIEMENT - MTN MOBILE MONEY
+    // ==========================================
+    document.getElementById('mtn-pay-btn').addEventListener('click', function() {
+      const modalContent = `
+        <div class="modal-header">
+          <div class="icon"></div>
+          <h3 style="color: #FFCC00;">Paiement MTN Mobile Money</h3>
+          <p style="opacity: 0.8;">Instructions pour effectuer le paiement</p>
+        </div>
+
+        <div class="modal-info" style="background: rgba(255, 204, 0, 0.2); border-left-color: #FFCC00;">
+          <p><strong style="color: #FFCC00;">Montant à payer :</strong> ${CONFIG.AMOUNT.toLocaleString()} FCFA</p>
+        </div>
+
+        <h4 style="color: #FFCC00; margin: 20px 0 15px;"> Option 1 : Via USSD</h4>
+        <div class="modal-steps">
+          <div class="modal-step">
+            <div class="step-number" style="background: #FFCC00; color: #000;">1</div>
+            <div class="step-text">Composez <strong>*133#</strong> sur votre téléphone</div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FFCC00; color: #000;">2</div>
+            <div class="step-text">Sélectionnez <strong>"Transfert d'argent"</strong></div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FFCC00; color: #000;">3</div>
+            <div class="step-text">
+              Entrez le numéro : <strong>${CONFIG.MTN_NUMBER}</strong>
+              <button class="copy-btn" id="copy-mtn" onclick="copyToClipboard('${CONFIG.MTN_NUMBER}', 'copy-mtn')"> Copier</button>
+            </div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FFCC00; color: #000;">4</div>
+            <div class="step-text">Montant : <strong>${CONFIG.AMOUNT.toLocaleString()} FCFA</strong></div>
+          </div>
+        </div>
+
+        <h4 style="color: #FFCC00; margin: 20px 0 15px;"> Option 2 : Via l'application</h4>
+        <div class="modal-steps">
+          <div class="modal-step">
+            <div class="step-number" style="background: #FFCC00; color: #000;">1</div>
+            <div class="step-text">Ouvrez l'app <strong>MTN MoMo</strong></div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FFCC00; color: #000;">2</div>
+            <div class="step-text">Cliquez sur <strong>"Envoyer de l'argent"</strong></div>
+          </div>
+          <div class="modal-step">
+            <div class="step-number" style="background: #FFCC00; color: #000;">3</div>
+            <div class="step-text">Entrez le numéro et le montant ci-dessus</div>
+          </div>
+        </div>
+
+        <button onclick="closePaymentModal()" style="width: 100%; margin-top: 20px; padding: 15px; font-size: 16px; background: #FFCC00; color: #000; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">
+          J'ai compris
+        </button>
+      `;
+      openPaymentModal(modalContent);
+    });
+
+    // ==========================================
+    // GESTION DE LA SOUMISSION
+    // ==========================================
+    const form = document.getElementById('inscription-form');
+
+    // Détecter la soumission réussie avec Formspree
+    if (window.location.hash === '#success') {
+      document.getElementById('success-overlay').classList.add('active');
+      
+      // Rediriger vers la page d'accueil après 5 secondes
+      setTimeout(() => {
+        window.location.href = '/'; // Changez ceci vers votre page d'accueil
+      }, 5000);
+    }
+
+    // Validation du numéro de téléphone
+    const phoneInput = document.querySelector('input[name="telephone"]');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9+\s]/g, '');
+      });
+    }
+  </script>
+</body>
+</html>
